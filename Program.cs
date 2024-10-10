@@ -7,6 +7,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 if (builder.Environment.IsDevelopment())
 {
+    // 測試
     // 測試 prod azure
     builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Production.json");
     // var ConnectString = builder.Configuration.GetConnectionString("IronThirty");
@@ -17,7 +18,10 @@ if (builder.Environment.IsDevelopment())
     var ConnectString = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING");
     builder.Services.AddDbContext<BlogDbContext>(Options =>
     {
-        Options.UseSqlServer(ConnectString, providerOptions => providerOptions.EnableRetryOnFailure());
+        Options.UseSqlServer(
+            ConnectString,
+            providerOptions => providerOptions.EnableRetryOnFailure()
+        );
     });
 }
 else
@@ -51,8 +55,6 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
