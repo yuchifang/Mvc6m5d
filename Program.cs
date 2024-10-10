@@ -8,6 +8,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSwaggerGen();
 if (builder.Environment.IsDevelopment())
 {
+    // 測試
     // 測試 prod azure
     builder.Configuration.AddEnvironmentVariables().AddJsonFile("appsettings.Production.json");
     // var ConnectString = builder.Configuration.GetConnectionString("IronThirty");
