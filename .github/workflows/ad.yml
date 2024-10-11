@@ -4,9 +4,9 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    steps:
-        - name: Check if directory is writable
-            run: |
-              mkdir -p ${{ env.APPDATA }}/ASP.NET/https
-              echo "Test" > ${{ env.APPDATA }}/ASP.NET/https/testfile.txt
-              ls -la ${{ env.APPDATA }}/ASP.NET/https
+    steps:  
+      - name: Check if directory is writable
+        run: |
+          mkdir -p ${{ env.APPDATA }}/ASP.NET/https
+          echo "Test" > ${{ env.APPDATA }}/ASP.NET/https/testfile.txt
+          ls -la ${{ env.APPDATA }}/ASP.NET/https
