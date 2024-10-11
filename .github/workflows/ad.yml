@@ -9,4 +9,4 @@ jobs:
         run: |
           mkdir -p ${{ env.APPDATA }}/ASP.NET/https
           echo "Test" > ${{ env.APPDATA }}/ASP.NET/https/testfile.txt
-          ls -la ${{ env.APPDATA }}/ASP.NET/https
+          Get-ChildItem -Path ${{ env.APPDATA }}/ASP.NET/https -Force
